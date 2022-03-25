@@ -28,13 +28,13 @@ function App() {
               <div
                 className="cell2"
                 onClick={() => {
-                  console.log(1);
+                  console.log(2);
                 }}
               ></div>
               <div
                 className="cell3"
                 onClick={() => {
-                  console.log(1);
+                  console.log(3);
                 }}
               ></div>
             </div>
@@ -42,19 +42,19 @@ function App() {
               <div
                 className="cell4"
                 onClick={() => {
-                  console.log(1);
+                  console.log(4);
                 }}
               ></div>
               <div
                 className="cell5"
                 onClick={() => {
-                  console.log(1);
+                  console.log(5);
                 }}
               ></div>
               <div
                 className="cell6"
                 onClick={() => {
-                  console.log(1);
+                  console.log(6);
                 }}
               ></div>
             </div>
@@ -62,19 +62,19 @@ function App() {
               <div
                 className="cell7"
                 onClick={() => {
-                  console.log(1);
+                  console.log(7);
                 }}
               ></div>
               <div
                 className="cell8"
                 onClick={() => {
-                  console.log(1);
+                  console.log(8);
                 }}
               ></div>
               <div
                 className="cell9"
                 onClick={() => {
-                  console.log(1);
+                  console.log(9);
                 }}
               ></div>
             </div>
