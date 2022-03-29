@@ -4,35 +4,35 @@ import "./Detail.scss";
 import { useState } from "react";
 
 function App() {
-  let [game, gameChange] = useState(
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-  );
+  let [game, gameChange] = useState([
+    ["s", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ]);
   return (
     <div className="App">
       <div className="Nav">
         <h1 className="title">Tic Tac Toe</h1>
 
         <div className="game-container">
-          <GameBox />
+          <GameBox game={game} gameChange={gameChange} />
         </div>
       </div>
     </div>
   );
 }
 
-function GameBox() {
+function GameBox(props) {
   return (
     <div className="game-box">
       <div className="row1">
         <div
           className="cell1"
           onClick={() => {
-            console.log(1);
+            props.gameChange(props.game[0][0] == "x");
           }}
         >
-          {}
+          {props.game[0][0]}
         </div>
         <div
           className="cell2"
