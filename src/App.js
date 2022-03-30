@@ -4,8 +4,9 @@ import "./Detail.scss";
 import { useState } from "react";
 
 function App() {
+  let [turn, turnChange] = useState(0);
   let [game, gameChange] = useState([
-    ["s", "", ""],
+    ["", "", ""],
     ["", "", ""],
     ["", "", ""],
   ]);
@@ -29,7 +30,7 @@ function GameBox(props) {
         <div
           className="cell1"
           onClick={() => {
-            props.gameChange(props.game[0][0] == "x");
+            props.gameChange((props.game[0][0] = "x"));
           }}
         >
           {props.game[0][0]}
