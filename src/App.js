@@ -4,22 +4,38 @@ import "./Detail.scss";
 import { useState } from "react";
 
 function App() {
+  let [done, setDone] = useState(0);
   let [turn, setTurn] = useState(0);
   let [mark, setMark] = useState([
-    "", "", "",
-    "", "", "",
-    "", "", "",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
   ]);
 
-// const turnChange = ()=>{
-//   if(turn === 0){
-//     setMark((mark[] = "X"))
-//     setTurn(1)
-//   }else if(turn === 1){
-//     setMark((mark[] = "O"))
-//     setTurn(0)
-//   }
-// }
+  const marking = (a) => {
+    if (done === 8) {
+      if (mark[0] && mark[1] && mark[1]) {
+      }
+    }
+    let newMark = [...mark];
+    if (turn === 0) {
+      newMark[a] = "X";
+      setMark(newMark);
+      setTurn(1);
+      console.log(newMark);
+    } else if (turn === 1) {
+      newMark[a] = "O";
+      setMark(newMark);
+      setTurn(0);
+    }
+    done++;
+  };
 
   return (
     <div className="App">
@@ -27,7 +43,7 @@ function App() {
         <h1 className="title">Tic Tac Toe</h1>
 
         <div className="game-container">
-          <GameBox mark={mark} turnChange={turnChange} />
+          <GameBox mark={mark} marking={marking} />
         </div>
       </div>
     </div>
@@ -35,67 +51,93 @@ function App() {
 }
 
 function GameBox(props) {
-  return (   
+  return (
     <div className="game-box">
       <div className="row1">
         <div
           className="cell1"
           data-id="0"
-          onClick={() => console.log(e.target.id)}> 
-        <span className="marks">{props.mark[0]}</span>        
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[0]}</span>
         </div>
         <div
           className="cell2"
-          onClick={() => {
-          props.turnChange()}}>
-          <span className="marks">{props.mark[0][1]}</span>     
+          data-id="1"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[1]}</span>
         </div>
         <div
           className="cell3"
-          onClick={() => {
-          props.turnChange()}}>
-          <span className="marks">{props.mark[0][2]}</span>   
+          data-id="2"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[2]}</span>
         </div>
       </div>
       <div className="row2">
         <div
           className="cell4"
-          onClick={() => {
-          props.turnChange()}}>
-        <span className="marks">{props.mark[1][0]}</span>       
+          data-id="3"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[3]}</span>
         </div>
         <div
           className="cell5"
-          onClick={() => {
-          props.turnChange()
-          }}>
-        <span className="marks">{props.mark[1][1]}</span>       
+          data-id="4"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[4]}</span>
         </div>
         <div
           className="cell6"
-          onClick={() => {
-          props.turnChange()}}>
-        <span className="marks">{props.mark[1][2]}</span>         
+          data-id="5"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[5]}</span>
         </div>
       </div>
       <div className="row3">
         <div
           className="cell7"
-          onClick={() => {
-          props.turnChange()}}>
-        <span className="marks">{props.mark[2][0]}</span>   
+          data-id="6"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[6]}</span>
         </div>
         <div
           className="cell8"
-          onClick={() => {
-            props.turnChange()}}>
-        <span className="marks">{props.mark[2][1]}</span>       
+          data-id="7"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[7]}</span>
         </div>
         <div
           className="cell9"
-          onClick={() => {
-          props.turnChange()}}>
-        <span className="marks">{props.mark[0][0]}</span>     
+          data-id="8"
+          onClick={(e) => {
+            props.marking(e.target.dataset.id);
+          }}
+        >
+          <span className="marks">{props.mark[8]}</span>
         </div>
       </div>
     </div>
