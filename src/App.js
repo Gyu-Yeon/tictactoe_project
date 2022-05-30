@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import "./Detail.scss";
 import Gamebox from "./Gamebox";
-import { useState, useToggle } from "react";
+import { useEffect, useState, useToggle } from "react";
 import Alert from "./Alert";
 
 function App() {
@@ -23,29 +23,42 @@ function App() {
   let [player1state, setPlayer1state] = useState(true);
   let [player2state, setPlayer2state] = useState(false);
 
-  const doubleCheck = (a) => {
-    if (mark[a] != "X" || "O") {
-      setPlaced(1);
+  let newMark = [...mark];
+  const marking = (a) => {
+    if (mark[a] !== null) {
+      return setPlaced(true);
     }
-    console.log(placed);
-    return;
+    if (turn === true && mark[a] === null) {
+      newMark[a] = "X";
+      setMark(newMark);
+    } else if (turn === false && mark[a] == null) {
+      newMark[a] = "O";
+      setMark(newMark);
+    }
+    setTurn(!turn);
+    console.log("hi");
+    // if (mark[a] == null) {
+    //   if (turn === true && mark[a] == null) {
+    //     newMark[a] = "X";
+    //     setMark(newMark);
+    //   } else if (turn === false) {
+    //     newMark[a] = "O";
+    //     setMark(newMark);
+    //   }
+    //   setTurn(!turn);
+    // } else if (mark[a] != null) {
+    //   setPlaced(true);
+    // }
   };
 
-  const marking = (a) => {
-    let newMark = [...mark];
-    if (mark[a] == null) {
-      if (turn === true && mark[a] == null) {
-        newMark[a] = "X";
-        setMark(newMark);
-      } else if (turn === false) {
-        newMark[a] = "O";
-        setMark(newMark);
-      }
-      setTurn(!turn);
-    } else if (mark[a] != null) {
-      setPlaced(true);
-    }
-  };
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setPlaced(false);
+    }, 2000);
+    return () => {
+      clearTimeout(a);
+    };
+  }, [placed]);
 
   return (
     <div className="App">
