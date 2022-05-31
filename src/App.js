@@ -4,9 +4,9 @@ import "./Detail.scss";
 import Gamebox from "./Gamebox";
 import { useEffect, useState, useToggle } from "react";
 import Alert from "./Alert";
+import Who from "./Who";
 
 function App() {
-  let [done, setDone] = useState(0);
   let [turn, setTurn] = useState(true);
   let [mark, setMark] = useState([
     null,
@@ -36,19 +36,8 @@ function App() {
       setMark(newMark);
     }
     setTurn(!turn);
-    console.log("hi");
-    // if (mark[a] == null) {
-    //   if (turn === true && mark[a] == null) {
-    //     newMark[a] = "X";
-    //     setMark(newMark);
-    //   } else if (turn === false) {
-    //     newMark[a] = "O";
-    //     setMark(newMark);
-    //   }
-    //   setTurn(!turn);
-    // } else if (mark[a] != null) {
-    //   setPlaced(true);
-    // }
+    setPlayer1state(!player1state);
+    setPlayer2state(!player2state);
   };
 
   useEffect(() => {
@@ -60,15 +49,36 @@ function App() {
     };
   }, [placed]);
 
+  const gameSet = () => {
+    if (
+      (mark[0] == "X" && mark[1] == "X" && mark[2] == "X") ||
+      (mark[0] == "O" && mark[1] == "O" && mark[2] == "O")
+    ) {
+    }
+  };
+
   return (
     <div className="App">
       <div className="Nav">
         <h1 className="title">Tic Tac Toe</h1>
         {placed == true ? <Alert /> : null}
+        <Who
+          player1state={player1state}
+          setPlayer1state={setPlayer1state}
+          player2state={player2state}
+        />
         <div className="game-container">
           <Gamebox mark={mark} marking={marking} />
         </div>
       </div>
+    </div>
+  );
+}
+
+function End() {
+  return (
+    <div>
+      <p>Player 1 Won!!!</p>
     </div>
   );
 }
