@@ -50,10 +50,7 @@ function App() {
   }, [placed]);
 
   const gameSet = () => {
-    if (
-      (mark[0] == "X" && mark[1] == "X" && mark[2] == "X") ||
-      (mark[0] == "O" && mark[1] == "O" && mark[2] == "O")
-    ) {
+    if (mark[0] == "X" && mark[1] == "X" && mark[2] == "X") {
     }
   };
 
@@ -67,6 +64,7 @@ function App() {
           setPlayer1state={setPlayer1state}
           player2state={player2state}
         />
+        <End />
         <div className="game-container">
           <Gamebox mark={mark} marking={marking} />
         </div>
@@ -79,6 +77,7 @@ function End() {
   return (
     <div>
       <p>Player 1 Won!!!</p>
+      <button>Again</button>
     </div>
   );
 }
